@@ -1,25 +1,23 @@
 module.exports = function (config) {
     config.set({
-        basePath: '',
-        frameworks: ['browserify', 'jasmine'],
-
+        browsers: ['PhantomJS'],
         files: [
-            'examples/es6-classes.js'
+            { pattern: 'test-context.js', watched: false }
         ],
-
-        exclude: [
-        ],
-
+        frameworks: ['jasmine'],
         preprocessors: {
-            'examples/es6-classes.js': ['browserify'],
-            'spec/*.js': ['browserify']
+            'test-context.js': ['webpack']
         },
-
-        browserify: {
-            debug: true,
-            transform: ['babelify']
+        webpack: {
+            module: {
+                loaders: [
+                    { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015' }
+                ]
+            },
+            watch: true
         },
-
-        // define reporters, port, logLevel, browsers etc.
+        webpackServer: {
+            noInfo: true
+        }
     });
 };

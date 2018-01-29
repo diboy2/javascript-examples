@@ -1,5 +1,5 @@
-import Vehicle "./Vehicle";
-import Car "./Car";
+import Vehicle from "./Vehicle";
+import Car from "./Car";
 
 
 export {
