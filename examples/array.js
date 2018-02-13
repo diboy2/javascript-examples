@@ -40,8 +40,27 @@ const binarySearch = (arr, value) => {
     return -1;
 };
 
+const reverseArray = (arr, start, end ) => {
+    if((arr != null && arr instanceof Array) && (typeof start === 'number') && (typeof end === 'number')) {
+        for (let i = start, j = end; i < j; i++, j--){
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    } else {
+        throw new Error("invalid overload");
+    }
+};
+
+const rotateArray = (a, n, k) => {
+    reverseArray(a, 0, k - 1);
+    reverseArray(a, k, n - 1);
+    reverseArray(a, 0, n - 1);
+};
+
 export {
     sumArray,
     sequentialSearch,
-    binarySearch
+    binarySearch,
+    rotateArray
 };

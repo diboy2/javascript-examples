@@ -1,4 +1,4 @@
-import {sumArray, sequentialSearch, binarySearch} from "../examples/array";
+import {sumArray, sequentialSearch, binarySearch, rotateArray} from "../examples/array";
 
 describe("Array Interview Questions", () => {
     it("sum all the elements of an array", ()=> {
@@ -17,6 +17,11 @@ describe("Array Interview Questions", () => {
         expect(binarySearch(arr, 7)).toBe(6);
     });
 
+    it("rotates the array by an index", () => {
+        let arr = [10,20,30,40,50,60];
 
+        rotateArray(arr, 6, 2);
+        expect(arr).toEqual([30,40,50,60,10,20]);
+    });
 });
 
