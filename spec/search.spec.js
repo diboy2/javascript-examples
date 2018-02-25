@@ -1,9 +1,9 @@
 import {
     linearSearchUnsorted, linearSearchSorted,
     binarySearch
-} from "../examples/sort";
+} from "../examples/search";
 
-describe("sort", () => {
+describe("search", () => {
 
     it("should do a linear search for an unsorted array", () => {
         const arr = [4,32,7,234,123,43,54];

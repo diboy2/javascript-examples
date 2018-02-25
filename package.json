@@ -2,7 +2,7 @@
     "name": "javascript-examples",
     "version": "0.0.1",
     "description": "Javascript Examples",
-    "main": "index.js",
+    "main":     "index.js",
     "scripts": {
         "tests": "karma start"
     },
