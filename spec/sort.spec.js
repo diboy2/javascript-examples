@@ -1,7 +1,9 @@
 import {
     BubbleSort,
     InsertionSort,
-    SelectionSort
+    SelectionSort,
+    MergeSort,
+    QuickSort
 } from "../examples/sort";
 
 describe("sort", () => {
@@ -29,4 +31,17 @@ describe("sort", () => {
         selectionSort.sort();
         expect(sortedArray).toEqual(selectionSort.array);
     });
+
+    it("MergeSort should sort", () => {
+        const mergeSort = new MergeSort(unsortedArray);
+        mergeSort.sort();
+        expect(sortedArray).toEqual(mergeSort.array);
+    });
+
+    it("QuickSort should sort", () => {
+        const quickSort = new QuickSort(unsortedArray);
+        quickSort.sort();
+        expect(sortedArray).toEqual(quickSort.array);
+    });
+
 });

@@ -82,6 +82,7 @@ class MergeSort {
         let lowerStop = middleIndex;
         let upperStart = middleIndex + 1;
         let upperStop = upperIndex;
+        let count = lowerIndex;
         while((lowerStart <= lowerStop && upperStart <= upperStop)) {
             if(array[lowerStart] < array[upperStart]) {
                 tempArray[count++] = array[lowerStart++];
@@ -105,12 +106,17 @@ class MergeSort {
         if(lowerIndex >= upperIndex){
             return;
         }
-        let middleIndex = ((lowerIndex + upperIndex) / 2 | 0);
+        let middleIndex = Math.floor((lowerIndex + upperIndex)/ 2);
         this.mergeSort(array, tempArray, lowerIndex, middleIndex);
         this.mergeSort(array, tempArray, middleIndex + 1, upperIndex);
         this.merge(array, tempArray, lowerIndex, middleIndex, upperIndex);
     }
 
+    sort() {
+        let size = this.array.length;
+        let tempArray = new Array(size);
+        this.mergeSort(this.array, tempArray, 0, size -1);
+    }
 }
 
 class QuickSort {
@@ -136,14 +142,14 @@ class QuickSort {
             while((array[lower] <= pivot && lower < upper)){
                 lower++;
             }
-            while((array[upper] > pivot && lower < upper)){
+            while((array[upper] > pivot && lower <= upper)){
                 upper--;
             }
             if(lower < upper){
                 this.swap(array, upper, lower);
             }
         }
-        this.swap(array, upper, lower);
+        this.swap(array, upper, start);
         this.quickSortUtil(array, start, upper - 1);
         this.quickSortUtil(array, upper + 1, stop);
     }
