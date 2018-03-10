@@ -1,20 +1,6 @@
 
+import Node from "./Node";
 
-class Node {
-    constructor(v, n) {
-        if((typeof v === 'number') && ((n != null && n instanceof Node) || n === null)) {
-            this.value = v;
-            this.next = n;
-        }
-        else if ((typeof v === 'number') && n === undefined) {
-            this.value = v;
-            this.next = null;
-        }
-        else {
-            throw new Error("Invalid argument");
-        }
-    }
-}
 
 export default class LinkedList{
     constructor(){
@@ -44,31 +30,6 @@ export default class LinkedList{
                 pointer = pointer.next;
             }
             pointer.next = new Node(value, null);
-        }
-    }
-
-    print() {
-        let pointer = this.head;
-        while(pointer !== null) {
-            console.log(pointer.value + " ");
-            pointer = pointer.next;
-        }
-    }
-
-    sortedInsert(value){
-        let pointer = this.head;
-        const newNode = new Node(value, null);
-        if(pointer === null && pointer.value > value) {
-            newNode.next = this.head;
-            this.head = newNode;
-            return;
-        }
-        else{
-            while(pointer.value < value && pointer.next != null){
-                pointer = pointer.next;
-            }
-            newNode.next = pointer.next;
-            pointer.next = newNode;
         }
     }
 
