@@ -7,7 +7,6 @@ export default class BinarySearchTree {
 
     createBinaryTree(sortedArray) {
         this.root = createBinaryTreeUtil(sortedArray, 0, sortedArray.length - 1);
-
     }
 
     createBinaryTreeUtil(sortedArray, start, end)
