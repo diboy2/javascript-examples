@@ -12,12 +12,16 @@ export default class BinaryTree {
 
     levelOrderBinaryTreeUtil(array, start) {
         const size = array.length;
-        let currentNode = new TreeNode(array[start]);
+        let currentNode = new TreeNode(array[start], null, null);
         let left = 2 * start + 1;
         let right = 2 * start + 2;
+        if(left < size){
+            currentNode.leftChild = this.levelOrderBinaryTreeUtil(array, left);
+        }
+        if(right < size) {
+            currentNode.rightChild = this.levelOrderBinaryTreeUtil(array, right);
+        }
 
-        currentNode.leftChild = this.levelOrderBinaryTreeUtil(array, left);
-        currentNode.rightChild = this.levelOrderBinaryTreeUtil(array, right);
         return currentNode;
     }
 
@@ -28,9 +32,11 @@ export default class BinaryTree {
     }
 
     preOrderTraversalUtil(array, node) {
-        array.push(node.value);
-        preOrderTraversalUtil(array, node.leftChild);
-        preOrderTraversalUtil(array, node.rightChild);
+        if(node != null){
+            array.push(node.value);
+            this.preOrderTraversalUtil(array, node.leftChild);
+            this.preOrderTraversalUtil(array, node.rightChild);
+        }
     }
 
     postOrderTraversal() {
@@ -40,9 +46,11 @@ export default class BinaryTree {
     }
 
     postOrderTraversalUtil(array, node){
-        postOrderTraversalUtil(array, node.leftChild);
-        postOrderTraversalUtil(array, node.rightChild);
-        array.push(node.value);
+        if (node != null) {
+            this.postOrderTraversalUtil(array, node.leftChild);
+            this.postOrderTraversalUtil(array, node.rightChild);
+            array.push(node.value);
+        }
     }
 
     inOrderTraversal() {
@@ -52,11 +60,11 @@ export default class BinaryTree {
     }
 
     inOrderTraversalUtil(array, node) {
-        this.inOrderTraversalUtil(array, node.leftChild);
-        this.inOrderTraversalUtil(array, node.rightChild);
-        array.push(node.value);
+        if (node != null) {
+            this.inOrderTraversalUtil(array, node.leftChild);
+            array.push(node.value);
+            this.inOrderTraversalUtil(array, node.rightChild);
+
+        }
     }
-
-
-
 }

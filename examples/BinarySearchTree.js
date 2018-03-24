@@ -6,17 +6,17 @@ export default class BinarySearchTree {
     }
 
     createBinaryTree(sortedArray) {
-        this.root = createBinaryTreeUtil(sortedArray, 0, sortedArray.length - 1);
+        this.root = this.createBinaryTreeUtil(sortedArray, 0, sortedArray.length - 1);
     }
 
     createBinaryTreeUtil(sortedArray, start, end)
     {
-        if(end >= start)
+        if(start > end)
             return null;
         const mid = Math.floor((start + end) / 2);
-        const node = new TreeNode(sortedArray[mid]);
-        node.leftChild = createBinaryTreeUtil(sortedArray, start, mid - 1);
-        node.rightChild = createBinaryTreeUtil(sortedArray, mid + 1, end);
+        const node = new TreeNode(sortedArray[mid], null, null);
+        node.leftChild = this.createBinaryTreeUtil(sortedArray, start, mid - 1);
+        node.rightChild = this.createBinaryTreeUtil(sortedArray, mid + 1, end);
         return node;
     }
 }
